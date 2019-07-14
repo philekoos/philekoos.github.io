@@ -43,7 +43,7 @@ yargs.command({
     command: 'remove',
     describe: 'remove a new note',
     builder: {
-        title:{
+        title: {
             describe: 'Node title',
             demandOption: true,
             type: String
@@ -67,8 +67,15 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'read a note',
-    handler() {
-        console.log('Reading a note');
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.readNote(argv.title)
     }
 })
 
